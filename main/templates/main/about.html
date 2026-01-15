@@ -1,0 +1,27 @@
+{% extends "./base.html" %}
+{% load static %}
+
+<title>О сайте</title>
+
+{% block css %}
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<!-- Page Content -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="mt-5">О сайте!</h1>
+                <p>Сайт для определения лунного возраста</p>
+                <button id="start-purchase-btn" type="button" class="btn btn-lg">
+                    <a id="start-purchase-link" href="#">
+                        Начать покупки
+                    </a>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 
