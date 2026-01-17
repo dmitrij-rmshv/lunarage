@@ -1,0 +1,24 @@
+{% extends "./base.html" %}
+{% load static %}
+
+<title>{{ title }}</title>
+
+{% block css %}
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<!-- Page Content -->
+<section>
+    <div class="container mt-5">
+        <form action="{% url 'orders:order_create' %}" method="post">
+        {% csrf_token %}                                            
+            <div class="mb-3">
+                <label for="exampleDate" class="form-label">Выберите дату</label>
+                <input type="date" class="form-control" id="exampleDate">
+            </div>
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
+    </div>
+    </section>
+{% endblock %} 

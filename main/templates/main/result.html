@@ -1,0 +1,27 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<!-- Page Content -->
+<section>
+    <!--    <div class="alert alert-light text-center" role="alert">-->
+    <!--        Информационное сообщение-->
+    <!--    </div>-->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <p>ва лунный возраст {{ lunarage }} лун</p>
+                <button id="back-btn" type="button" class="btn btn-lg">
+                    <a id="back-link" href="#">
+                        Начать покупки
+                    </a>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 
