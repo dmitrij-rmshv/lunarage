@@ -85,13 +85,45 @@ class MoonsCalc:
                 end_moon = self.new_moons.index(new_moon)
                 previous_moon = self.new_moons[end_moon - 1]
                 fractional_part = (now_date - previous_moon) / (new_moon - previous_moon)
+                fase = MoonsCalc.fase_calc(fractional_part)
                 precise_end_moon = end_moon - 1 + fractional_part
                 break
-        return end_moon - start_moon, round(precise_end_moon - precise_start_moon, 2), precise_start_moon
+        return end_moon - start_moon, round(precise_end_moon - precise_start_moon, 2), fase
 
     def moons_calc(self, birth_date):
         ''' надо сделать DRY на fool_moons_calc и new_moons_calc'''
         pass
+
+    @staticmethod
+    def fase_calc(fraction):
+        """
+        Docstring for fase_calc
+        :param fraction: float{0...1} фаза луны, где 0 - новолуние 0.5 - полнолуние
+        return:
+        0 - новолуние
+        1 - молодая луна
+        2 - первая четверть
+        3 - растущая луна
+        4 - полнолуние
+        5 - убывающая луна
+        6 - последняя четверть
+        7 - старая луна
+        """
+        if fraction > 0.05 and fraction <= 0.21:
+            return 1
+        if fraction > 0.21 and fraction <= 0.29:
+            return 2
+        if fraction > 0.29 and fraction <= 0.45:
+            return 3
+        if fraction > 0.45 and fraction <= 0.55:
+            return 4
+        if fraction > 0.55 and fraction <= 0.71:
+            return 5
+        if fraction > 0.71 and fraction <= 0.79:
+            return 6
+        if fraction > 0.79 and fraction <= 0.95:
+            return 7
+        return 0
 
     def round_moon_date(self, birth_date, moons):
         for new_moon in self.new_moons:
@@ -125,6 +157,25 @@ def rounding(age):
         return int((age // 500 + 1) * 500)
     else:
         return int((age // 1000 + 1) * 1000)
+
+
+def fase_presentation(fase):
+    if fase == 0:
+        return '🌑', 'в новолуние'
+    if fase == 1:
+        return '🌒', 'в молодую луну (растущий серп)'
+    if fase == 2:
+        return '🌓', 'в первую четверть лунного цикла'
+    if fase == 3:
+        return '🌔', 'в растущую луну'
+    if fase == 4:
+        return '🌕', 'в полнолуние'
+    if fase == 5:
+        return '🌖', 'в убывающую луну'
+    if fase == 6:
+        return '🌗', 'в последнюю четверть лунного цикла'
+    if fase == 7:
+        return '🌘', 'в старую луну (убывающий серп)'
 
 
 MC = MoonsCalc()

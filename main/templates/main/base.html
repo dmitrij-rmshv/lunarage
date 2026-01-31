@@ -42,22 +42,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                {% if title != 'lunarage-главная' %}
                 <li class="nav-item">
-                    <a class="nav-link" href="https://деньрожднья.рф/111/">Главная<i class="fas fa-home"></i>
+                    <a class="nav-link" href="{% url 'main:index' %}">Главная<i class="fas fa-home"></i>
                     </a>
                 </li>
+                {% endif %}
+                {% if title != 'О сайте' %}
                 <li class="nav-item">
                     <a class="nav-link root" href="{% url 'main:other' page='about' %}">О сайте<i class="fa fa-info"></i>
                     </a>
                 </li>
+                {% endif %}
+                {% if title != 'lunarage-расчёт' and title != 'ввод даты...' %}
                 <li class="nav-item">
-                    <a class="nav-link" href="https://деньрожднья.рф/111/">Как добраться?<i class="fas fa-plane"></i>
+                    <a class="nav-link" href="{% url 'main:birthday' %}">Расчёт<i class="fas fa-calculator"></i>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://деньрожднья.рф/111/">Меню<i class="fas fa-birthday-cake"></i>
-                    </a>
-                </li>
+                {% endif %}
             </ul>
         </div>
     </div>
@@ -85,7 +87,7 @@
                     </button>
                 </div>
             </div> -->
-            <p class="m-0 text-center text-white">♤ 523 laboratory ♤ - {% now 'Y' %}</p>
+            <p class="m-0 text-center text-white">2026 - ♤ 523 laboratory ♤ - {% now 'Y' %}</p>
         </div>
     </footer>
 {% endblock %}

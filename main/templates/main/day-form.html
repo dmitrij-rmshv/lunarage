@@ -11,11 +11,11 @@
 <!-- Page Content -->
 <section>
     <div class="container mt-5">
-        <form action="{% url 'orders:order_create' %}" method="post">
+        <form method="post">
+<!-- <form action="" method="post"> -->
         {% csrf_token %}                                            
             <div class="mb-3">
-                <label for="exampleDate" class="form-label">Выберите дату</label>
-                <input type="date" class="form-control" id="exampleDate">
+                {{ form.as_p }}
             </div>
             <button type="submit" class="btn btn-primary">Отправить</button>
         </form>

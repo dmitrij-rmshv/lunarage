@@ -8,7 +8,7 @@ class BirthDay(models.Model):
 class IP(models.Model):
     ip = models.GenericIPAddressField(protocol='both', unpack_ipv4=True, primary_key=True)
     count = models.PositiveIntegerField(default=1)
-    comment = models.CharField(max_length=32)
+    comment = models.CharField(max_length=32, default='')
 
 
 class BDayIP(models.Model):
