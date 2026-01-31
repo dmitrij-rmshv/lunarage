@@ -1,0 +1,38 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<!-- Page Content -->
+<section>
+    <!--    <div class="alert alert-light text-center" role="alert">-->
+    <!--        Информационное сообщение-->
+    <!--    </div>-->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <p>{{ fase.0 }} Вы родились в {{ fase.1 }} {{ fase.0 }}</p>
+                {% if full_moons > new_moons %}
+                <p>прожили {{ full_moons }} полнолуний и {{ new_moons }} новолуний.</p>
+                {% elif new_moons > full_moons %}
+                <p>прожили {{ new_moons }} новолуний и {{ full_moons }} полнолуний.</p>
+                {% else %}
+                <p>прожили {{ new_moons }} новолуний и полнолуний.</p>
+                {% endif %}
+                <p>Ваш лунный возраст {{ precise_lunarage }} лун</p>
+                {% for jbly in moonniversaries %}
+                <p>ваш лунный юбилей в {{ jbly.0 }} лун состоится: {{ jbly.1 }} </p>
+                {% endfor %}
+                <button id="to-calculation-btn" type="button" class="btn btn-lg">
+                    <a id="to-calculation-link" href="{% url 'main:birthday' %}">
+                        Расcчитать ещё !
+                    </a>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

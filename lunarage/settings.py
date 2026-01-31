@@ -52,6 +52,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'bootstrap4',
+    'captcha',
+    'main.apps.MainConfig',
 ]
 
 MIDDLEWARE = [
@@ -140,4 +143,3 @@ if DEBUG:
     )
 else:
     STATIC_ROOT = BASE_DIR / 'static'
-
