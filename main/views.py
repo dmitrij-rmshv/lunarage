@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse, Http404, HttpResponseRedirect
@@ -71,7 +71,7 @@ def date_input(request):
         print(request.POST.__dict__)
         if date_form.is_valid():
             print('date_form IS VALID')
-            birthday = date_form.cleaned_data['birthday']
+            birthday = date_form.cleaned_data['birthday'] + timedelta(hours=4)
             new_bd_entry = BirthDay.objects.create(birthday=birthday)
             # Приоритет: X-Forwarded-For, затем REMOTE_ADDR
             # XFF может содержать список IP, берем первый
